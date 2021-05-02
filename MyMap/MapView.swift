@@ -13,6 +13,9 @@ struct MapView: UIViewRepresentable {
     // 検索キーワード
     let searchkey:String
     
+    // マップ種類
+    let mapType: MKMapType
+    
     // 表示する View を作成する的に実行
     func makeUIView(context: Context) -> MKMapView{
         
@@ -26,6 +29,9 @@ struct MapView: UIViewRepresentable {
     
         // 入力された文字をデバッグエリアに追加
         print(searchkey)
+        
+        // マップ種類の設定
+        uiView.mapType = mapType
         
         // CLGeocoderインスタンスを取得
         let geocoder = CLGeocoder()
@@ -71,6 +77,6 @@ struct MapView: UIViewRepresentable {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(searchkey: "東京タワー")
+        MapView(searchkey: "東京タワー",mapType: .standard)
     }
 }
